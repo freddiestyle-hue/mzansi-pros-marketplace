@@ -1,0 +1,78 @@
+[
+  {
+    "id": "benny-painting",
+    "slug": "benny-painting",
+    "business_name": "Benny Painting",
+    "trade": "Painter",
+    "tagline": "Professional painting in Cape Town",
+    "location_area": "Upper Kenilworth, Cape Town",
+    "phone": "0745442366",
+    "whatsapp": "27745442366",
+    "hero_image_url": "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000017-PHOTO-2026-03-18-09-16-05.jpg",
+    "gallery_urls": [
+      "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000013-PHOTO-2026-03-18-09-16-03.jpg",
+      "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000014-PHOTO-2026-03-18-09-16-04.jpg",
+      "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000015-PHOTO-2026-03-18-09-16-04.jpg",
+      "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000016-PHOTO-2026-03-18-09-16-04.jpg",
+      "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000018-PHOTO-2026-03-18-09-16-05.jpg"
+    ],
+    "services": [
+      { "name": "Interior Painting", "desc": "Walls, ceilings, trims - full interior repaint", "price": "From R1,500" },
+      { "name": "Exterior Painting", "desc": "Facades, boundary walls, outbuildings", "price": "From R2,500" },
+      { "name": "Touch-ups and Repairs", "desc": "Crack repairs, patching, single room touch-ups", "price": "From R500" },
+      { "name": "Commercial Painting", "desc": "Offices, retail, schools, complexes", "price": "Quote on request" }
+    ],
+    "testimonial_text": "Benny was easily the most diligent, most professional painter - dedicated the most attention to detail while maintaining a constantly friendly presence in our home. He befriended the children and provided the most exceptional service. I could give no stronger recommendation.",
+    "testimonial_name": "Steven Waidelich",
+    "testimonial_suburb": "Upper Kenilworth",
+    "operating_hours": "Mon-Sat, 7am-6pm",
+    "site_url": "https://mzansi-benny-painting-dqcvenpyh-freddiestyle-5904s-projects.vercel.app",
+    "top_rated": true
+  },
+  {
+    "id": "sipho-plumbing",
+    "slug": "sipho-plumbing",
+    "business_name": "Sipho Plumbing",
+    "trade": "Plumber",
+    "tagline": "Fast, reliable plumbing in Mitchells Plain",
+    "location_area": "Mitchells Plain, Cape Town",
+    "phone": "0821234567",
+    "whatsapp": "27821234567",
+    "hero_image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    "gallery_urls": [],
+    "services": [
+      { "name": "Geyser Repair", "desc": "Fix or replace your geyser fast", "price": "From R350" },
+      { "name": "Leak Fix", "desc": "Burst pipes, leaking taps, drain blockages", "price": "From R200" },
+      { "name": "New Installation", "desc": "Geyser, basin, toilet - full installation", "price": "From R600" }
+    ],
+    "testimonial_text": "Sipho came within an hour. Fixed my burst pipe and cleaned up after. Proper professional.",
+    "testimonial_name": "Thabo M",
+    "testimonial_suburb": "Mitchells Plain",
+    "operating_hours": "Mon-Sat, 7am-7pm",
+    "site_url": null,
+    "top_rated": false
+  },
+  {
+    "id": "thandi-electricals",
+    "slug": "thandi-electricals",
+    "business_name": "Thandi Electricals",
+    "trade": "Electrician",
+    "tagline": "Qualified electrician serving Khayelitsha",
+    "location_area": "Khayelitsha, Cape Town",
+    "phone": "0761234567",
+    "whatsapp": "27761234567",
+    "hero_image_url": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80",
+    "gallery_urls": [],
+    "services": [
+      { "name": "Fault Finding", "desc": "Diagnose and fix electrical faults", "price": "From R250" },
+      { "name": "DB Board Upgrades", "desc": "Full DB board replacement and upgrade", "price": "From R1,200" },
+      { "name": "Plug and Light Points", "desc": "New plug, switch and light installations", "price": "From R300" }
+    ],
+    "testimonial_text": "Thandi sorted out my DB board same day. Neat work, certificates provided. Will use again.",
+    "testimonial_name": "Nomsa K",
+    "testimonial_suburb": "Khayelitsha",
+    "operating_hours": "Mon-Fri, 8am-5pm",
+    "site_url": null,
+    "top_rated": true
+  }
+]
