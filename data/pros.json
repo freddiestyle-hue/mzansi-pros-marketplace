@@ -8,7 +8,7 @@
     "location_area": "Upper Kenilworth, Cape Town",
     "phone": "0745442366",
     "whatsapp": "27745442366",
-    "description": "Benny Mbwale is a Cape Town painter who does the kind of work that gets noticed. He painted houses in Upper Kenilworth and left customers asking for his number. His work speaks for itself - clean lines, proper prep, Plascon Pro. He is looking for his next job and he will not let you down.",
+    "description": "Benny Mbwale is a professional painter based in Cape Town with extensive experience across residential and commercial properties. His work is characterised by meticulous surface preparation, clean lines and a consistently high-quality finish. He uses Plascon Pro materials and takes pride in leaving every site clean and completed to specification. Benny is available for both once-off projects and ongoing maintenance contracts.",
     "hero_image_url": "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000017-PHOTO-2026-03-18-09-16-05.jpg",
     "gallery_urls": [
       "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000013-PHOTO-2026-03-18-09-16-03.jpg",
@@ -18,10 +18,12 @@
       "https://raw.githubusercontent.com/freddiestyle-hue/Mzansi/main/benny/00000018-PHOTO-2026-03-18-09-16-05.jpg"
     ],
     "services": [
-      { "name": "Interior Painting", "desc": "Walls, ceilings, trims - full interior repaint", "price": "From R1,500" },
-      { "name": "Exterior Painting", "desc": "Facades, boundary walls, outbuildings", "price": "From R2,500" },
-      { "name": "Touch-ups and Repairs", "desc": "Crack repairs, patching, single room touch-ups", "price": "From R500" },
-      { "name": "Commercial Painting", "desc": "Offices, retail, schools, complexes", "price": "Quote on request" }
+      { "name": "Interior Painting", "desc": "Full interior repaints including walls, ceilings, skirtings and cornices. All furniture moved and protected.", "price": "" },
+      { "name": "Exterior Painting", "desc": "Facades, boundary walls, outbuildings and garages. Includes surface preparation and weatherproof finishes.", "price": "" },
+      { "name": "Surface Preparation", "desc": "Crack filling, sanding, plastering repairs and priming before painting. The foundation of a lasting finish.", "price": "" },
+      { "name": "Roof Painting", "desc": "IBR, Nutec and concrete roof painting using specialist roof coatings.", "price": "" },
+      { "name": "Commercial and Industrial", "desc": "Offices, retail spaces, warehouses, schools and complexes. Experienced working around occupied buildings.", "price": "" },
+      { "name": "Waterproofing", "desc": "Parapet walls, balconies, wet areas and roof surfaces using approved waterproofing systems.", "price": "" }
     ],
     "testimonial_text": "Benny was easily the most diligent, most professional painter - dedicated the most attention to detail while maintaining a constantly friendly presence in our home. He befriended the children and provided the most exceptional service. I could give no stronger recommendation.",
     "testimonial_name": "Steven Waidelich",

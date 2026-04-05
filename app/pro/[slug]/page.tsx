@@ -25,14 +25,28 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
 
   const stars = Array(5).fill(`<svg viewBox="0 0 24 24">${STAR_PATH}</svg>`).join('')
 
-  const serviceCards = pro.services.map(s => `
+  const SERVICE_ICONS: Record<string, string> = {
+    'Interior Painting': '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',
+    'Exterior Painting': '<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+    'Surface Preparation': '<path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>',
+    'Roof Painting': '<polyline points="23 6 13 16 8 11 1 18"/><polyline points="17 6 23 6 23 12"/>',
+    'Commercial and Industrial': '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>',
+    'Waterproofing': '<path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>',
+  }
+  const DEFAULT_ICON = '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>'
+
+  const serviceCards = pro.services.map(s => {
+    const icon = SERVICE_ICONS[s.name] || DEFAULT_ICON
+    return `
     <div class="service-card">
+      <div class="service-icon"><svg viewBox="0 0 24 24">${icon}</svg></div>
       <div class="service-card-text">
         <h3>${s.name}</h3>
         <p>${s.desc}</p>
+        ${s.price ? `<span class="service-price">${s.price}</span>` : ''}
       </div>
-      <span class="service-price">${s.price}</span>
-    </div>`).join('')
+    </div>`
+  }).join('')
 
   const galleryItems = pro.gallery_urls.map((url, i) =>
     `<div class="gallery-item" onclick="openLightbox(${i})"><img src="${url}" alt="Our work ${i + 1}" loading="lazy" /></div>`
@@ -115,10 +129,13 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
     .section-alt { background: var(--sand); }
     .section h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--charcoal); }
     .services-list { display: flex; flex-direction: column; gap: 0.75rem; }
-    .service-card { background: var(--warm-white); border: 1.5px solid var(--sand); border-radius: 12px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .service-card { background: var(--warm-white); border: 1.5px solid var(--sand); border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .service-icon { width: 36px; height: 36px; flex-shrink: 0; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .service-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card-text { flex: 1; }
     .service-card-text h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem; }
     .service-card-text p { font-size: 0.875rem; color: #666; line-height: 1.4; }
-    .service-price { font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--orange); white-space: nowrap; padding-top: 0.1rem; }
+    .service-price { font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--orange); white-space: nowrap; padding-top: 0.1rem; font-weight: 500; }
     .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
     .gallery-item { cursor: pointer; position: relative; overflow: hidden; border-radius: 10px; }
     .gallery-item img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s; }
@@ -203,10 +220,16 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
       <strong>WhatsApp us</strong>
     </div>
   </div>
+  ${(pro as any).description ? `
   <div class="section">
-    <h2>About ${pro.business_name}</h2>
-    <p style="color:#555; margin-bottom:1.5rem; font-size:0.95rem;">${(pro as any).description || pro.services.map(s => s.name).join(', ') + ' and more.'}</p>
+    <h2>About</h2>
+    <p style="color:#555; font-size:0.95rem; line-height:1.7;">${(pro as any).description}</p>
+  </div>` : ''}
+  <div class="section section-services" style="background:var(--sand);">
+    <div style="max-width:680px;margin:0 auto;">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;margin-bottom:1.25rem;">Services</h2>
     <div class="services-list">${serviceCards}</div>
+    </div>
   </div>
   ${pro.gallery_urls.length > 0 ? `
   <div class="section section-alt">
