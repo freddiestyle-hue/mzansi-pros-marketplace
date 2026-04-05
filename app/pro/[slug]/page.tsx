@@ -6,8 +6,9 @@ export function generateStaticParams() {
   return prosData.map(pro => ({ slug: pro.slug }))
 }
 
-export default function ProPage({ params }: { params: { slug: string } }) {
-  const pro = prosData.find(p => p.slug === params.slug)
+export default async function ProPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const pro = prosData.find(p => p.slug === slug)
   if (!pro) notFound()
 
   return (
