@@ -161,8 +161,8 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
     </div>
   </div>
   <div class="section">
-    <h2>What We Do</h2>
-    <p style="color:#555; margin-bottom:1.5rem; font-size:0.95rem;">${pro.services.map(s => s.name).join(', ')} and more.</p>
+    <h2>About ${pro.business_name}</h2>
+    <p style="color:#555; margin-bottom:1.5rem; font-size:0.95rem;">${(pro as any).description || pro.services.map(s => s.name).join(', ') + ' and more.'}</p>
     <div class="services-list">${serviceCards}</div>
   </div>
   ${pro.gallery_urls.length > 0 ? `
