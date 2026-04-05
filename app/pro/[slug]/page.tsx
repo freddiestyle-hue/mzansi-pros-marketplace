@@ -140,7 +140,7 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
     .testimonial-stars { display: flex; gap: 0.2rem; margin-bottom: 0.75rem; }
     .testimonial-stars svg { width: 16px; height: 16px; fill: var(--orange); }
     .testimonial-cite { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; color: rgba(255,255,255,0.7); }
-    .area-section { padding: 5rem 1.25rem; max-width: 680px; margin: 0 auto; }
+    .area-section { padding: 2.5rem 1.25rem; max-width: 680px; margin: 0 auto; }
     .area-section h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; margin-bottom: 1rem; }
     .area-tag { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--warm-white); border: 1.5px solid var(--sand); border-radius: 8px; padding: 0.6rem 1rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--green); margin-bottom: 1rem; }
     .area-note { font-size: 0.95rem; color: #555; }
