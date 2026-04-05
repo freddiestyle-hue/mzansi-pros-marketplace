@@ -35,8 +35,41 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
     </div>`).join('')
 
   const galleryItems = pro.gallery_urls.map((url, i) =>
-    `<div class="gallery-item"><img src="${url}" alt="Our work ${i + 1}" loading="lazy" /></div>`
+    `<div class="gallery-item" onclick="openLightbox(${i})"><img src="${url}" alt="Our work ${i + 1}" loading="lazy" /></div>`
   ).join('')
+
+  const galleryUrlsJson = JSON.stringify(pro.gallery_urls)
+  const lightboxScript = `
+    var _imgs = ${galleryUrlsJson};
+    var _idx = 0;
+    function openLightbox(i) {
+      _idx = i;
+      document.getElementById('lb').classList.add('open');
+      document.getElementById('lb-img').src = _imgs[_idx];
+      document.getElementById('lb-counter').textContent = (_idx+1) + ' / ' + _imgs.length;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lb').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function lbNext() {
+      _idx = (_idx + 1) % _imgs.length;
+      document.getElementById('lb-img').src = _imgs[_idx];
+      document.getElementById('lb-counter').textContent = (_idx+1) + ' / ' + _imgs.length;
+    }
+    function lbPrev() {
+      _idx = (_idx - 1 + _imgs.length) % _imgs.length;
+      document.getElementById('lb-img').src = _imgs[_idx];
+      document.getElementById('lb-counter').textContent = (_idx+1) + ' / ' + _imgs.length;
+    }
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lb').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') lbNext();
+      if (e.key === 'ArrowLeft') lbPrev();
+    });
+  `
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -87,7 +120,17 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
     .service-card-text p { font-size: 0.875rem; color: #666; line-height: 1.4; }
     .service-price { font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--orange); white-space: nowrap; padding-top: 0.1rem; }
     .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-    .gallery-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .gallery-item { cursor: pointer; position: relative; overflow: hidden; border-radius: 10px; }
+    .gallery-item img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox-img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 8px; }
+    .lightbox-close { position: absolute; top: 1rem; right: 1.25rem; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; opacity: 0.8; }
+    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2rem; cursor: pointer; background: rgba(255,255,255,0.1); border: none; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0.8; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-counter { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 0.85rem; font-family: DM Mono, monospace; }
     .testimonial-section { background: var(--green); padding: 3rem 1.25rem; }
     .testimonial-inner { max-width: 680px; margin: 0 auto; }
     .testimonial-section h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
@@ -169,7 +212,15 @@ export default async function ProPage({ params }: { params: Promise<{ slug: stri
   <div class="section section-alt">
     <h2>Our Work</h2>
     <div class="gallery-grid">${galleryItems}</div>
-  </div>` : ''}
+  </div>
+  <div class="lightbox" id="lb" onclick="if(event.target===this)closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+    <button class="lightbox-prev" onclick="lbPrev()">&#x2039;</button>
+    <img class="lightbox-img" id="lb-img" src="" alt="Gallery" />
+    <button class="lightbox-next" onclick="lbNext()">&#x203A;</button>
+    <span class="lightbox-counter" id="lb-counter"></span>
+  </div>
+  <script>${lightboxScript}</script>` : ''}
   <div class="testimonial-section">
     <div class="testimonial-inner">
       <h2>What customers say</h2>
